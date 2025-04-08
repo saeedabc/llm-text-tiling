@@ -5,16 +5,16 @@ This repository implements an **Extended TextTiling** algorithm for semantic top
 You may find a deployed demo for this repository on [Hugging Face Spaces](https://huggingface.co/spaces/saeedabc/llm-text-tiling-demo):
 
 ### Input Text and Parameters
-![Input Text and Parameters](assets/img/input_and_params.png)
+<img src="assets/img/input_and_params.png" alt="Input Text and Parameters" width="600">
 
 ### Output Text
-![Output Text](assets/img/output_text.png)
+<img src="assets/img/output_text.png" alt="Output Text" width="600">
 
 ### Output JSON
-![Output JSON](assets/img/output_json.png)
+<img src="assets/img/output_json.png" alt="Output JSON" width="600">
 
 ### Output Visualization
-![Output Visualization](assets/img/output_visualization.png)
+<img src="assets/img/output_visualization.png" alt="Output Visualization" width="600">
 
 
 ## Features
