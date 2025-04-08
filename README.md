@@ -1,32 +1,56 @@
-
 # Extended TextTiling using LLM Embeddings for Text Segmentation
 
-This repository implements an **Extended TextTiling** algorithm for semantic topic segmentation within text documents. The method utilizes **cosine similarity** over **LLM (Large Language Model) embeddings** of sentences to predict semantic or topic shifts. The approach leverages models from OpenAI and SentenceTransformers to embed sentences, enabling accurate prediction of boundaries within various text datasets.
+This repository implements an **Extended TextTiling** algorithm for semantic topic segmentation within text documents. The method utilizes **cosine similarity** over **LLM (Large Language Model) embeddings** of sentence windows to predict semantic or topic shifts. The approach leverages SentenceTransformer and OpenAI models to perform sentence-level sequence labelling on text segmentation benchmarks, including Wiki-727K and WikiSection.
+
+You may find a deployed demo for this repository on [Hugging Face Spaces](https://huggingface.co/spaces/saeedabc/llm-text-tiling-demo):
+
+### Input Text and Parameters
+![Input Text and Parameters](assets/img/input_and_params.png)
+
+### Output Text
+![Output Text](assets/img/output_text.png)
+
+### Output JSON
+![Output JSON](assets/img/output_json.png)
+
+### Output Visualization
+![Output Visualization](assets/img/output_visualization.png)
+
 
 ## Features
 
 - **LLM Embeddings**: Uses OpenAI models or SentenceTransformer models for sentence embedding.
 - **Cosine Similarity**: Computes an aggregated semantic similarity between sentence windows to the left and right of candidates to detect topic shifts.
 - **Sentence Pooling**: Offers multiple pooling strategies (mean, max, min) for cosine similarity computation.
-- **Hyperparameter Tuning**: Automatically tunes the window size (`k`), pooling method, and boundary threshold using a validation dataset.
+- **Hyperparameter Tuning**: Automatically tunes the window size, pooling method, and boundary threshold using a validation dataset.
 - **Support for Multiple Datasets**: Tested on Wiki-727K and WikiSection (en_city and en_disease) datasets.
 
-## Supported Models
+## Supported Embedding Models
 
-- **OpenAI Models**: 
-  - `text-embedding-ada-002`
-  - `text-embedding-3-small`
-  - `text-embedding-3-large`
-  
-- **SentenceTransformers Models**: 
+- **[SentenceTransformer Models](https://sbert.net/)**: 
   - `all-mpnet-base-v2`
   - `all-MiniLM-L6-v2`
 
+- **[OpenAI Models](https://platform.openai.com/docs/guides/embeddings)**: 
+  - `text-embedding-ada-002`
+  - `text-embedding-3-small`
+  - `text-embedding-3-large`
+
 ## Supported Datasets
 
-- **wiki727k**: A large Wikipedia-based dataset.
-- **en_city**: WikiSection dataset for city-related documents.
-- **en_disease**: WikiSection dataset for disease-related documents.
+- **`wiki727k`**: Wiki-727K is a large dataset for text segmentation, automatically extracted and labeled from Wikipedia. (Already tailored for sentence-level sequence labelling: [Huggingface](https://huggingface.co/datasets/saeedabc/wiki727k)).
+
+- **`en_city`**, **`en_disease`**: The WikiSection dataset is a collection of segmented Wikipedia articles related to cities and diseases. (Already tailored for sentence-level sequence labelling: [Huggingface](https://huggingface.co/datasets/saeedabc/wikisection)).
+
+### Custom Dataset Integration
+
+Any custom dataset can be easily integrated as long as it follows the schema below:
+
+- `id`: string - A unique identifier for each document.
+- `ids`: list[string] - The sentence ids within the document
+- `sentences`: list[string] - The sentences within the document.
+- `titles_mask`: optional[list[uint8]] - A binary mask to indicate which sentences are titles.
+- `labels`: optional[list[int]] - Binary labels for each sentence, where 0 represents "semantic-continuity" and 1 represents "semantic-shift."
 
 ## Installation
 
@@ -41,7 +65,7 @@ This repository implements an **Extended TextTiling** algorithm for semantic top
    pip install -r requirements.txt
    ```
 
-3. Set your OpenAI API key as an environment variable (if using OpenAI models):
+3. Set your OpenAI API key as an environment variable (if using OpenAI models and don't want to be prompted in runtime):
    ```bash
    export OPENAI_API_KEY="your-openai-api-key"
    ```
