@@ -2,9 +2,9 @@
 
 This repository implements an **Extended TextTiling** algorithm for semantic topic segmentation within text documents. The method utilizes **cosine similarity** over **LLM (Large Language Model) embeddings** of sentence windows to predict semantic or topic shifts. The approach leverages SentenceTransformer and OpenAI models to perform sentence-level sequence labelling on text segmentation benchmarks, including Wiki-727K and WikiSection.
 
-<div style="text-align: center;">
+<p align="center">
     <img src="assets/img/overview.jpg" alt="Overview" width="550">
-</div>
+</p>
 
 
 ## Demo
@@ -13,30 +13,30 @@ You may find a deployed demo for this repository on [Hugging Face Spaces](https:
 
 <details open>
   <summary>Input Text and Parameters</summary>
-  <div style="text-align: center;">
+  <p align="center">
     <img src="assets/img/input_and_params.png" alt="Input Text and Parameters" width="600">
-  </div>
+  </p>
 </details>
 
 <details>
   <summary>Output Text</summary>
-  <div style="text-align: center;">
+  <p align="center">
     <img src="assets/img/output_text.png" alt="Output Text" width="500">
-  </div>
+  </p>
 </details>
 
 <details>
   <summary>Output JSON</summary>
-  <div style="text-align: center;">
+  <p align="center">
     <img src="assets/img/output_json.png" alt="Output JSON" width="500">
-  </div>
+  </p>
 </details>
 
 <details open>
   <summary>Output Visualization</summary>
-  <div style="text-align: center;">
+  <p align="center">
     <img src="assets/img/output_visualization.png" alt="Output Visualization" width="500">
-  </div>
+  </p>
 </details>
 
 
